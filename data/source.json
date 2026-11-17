@@ -1,0 +1,52 @@
+{
+  "protocol": "inline-xbrl",
+  "collection": "sample-009",
+  "records": [
+    {
+      "kind": "filing",
+      "id": "filing-1",
+      "version": "v1",
+      "refs": [],
+      "payload": {
+        "source": "synthetic",
+        "position": 0
+      }
+    },
+    {
+      "kind": "fact",
+      "id": "fact-2",
+      "version": "v1",
+      "refs": [
+        "filing-1"
+      ],
+      "payload": {
+        "source": "synthetic",
+        "position": 1
+      }
+    },
+    {
+      "kind": "context",
+      "id": "context-3",
+      "version": "v1",
+      "refs": [
+        "fact-2"
+      ],
+      "payload": {
+        "source": "synthetic",
+        "position": 2
+      }
+    },
+    {
+      "kind": "unit",
+      "id": "unit-4",
+      "version": "v1",
+      "refs": [
+        "context-3"
+      ],
+      "payload": {
+        "source": "synthetic",
+        "position": 3
+      }
+    }
+  ]
+}

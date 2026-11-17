@@ -1,18 +1,13 @@
 {
   "kind": "source-records",
+  "protocol": "inline-xbrl",
+  "collection": "sample-009",
   "assets": [
     {
-      "path": "capture.bin",
-      "bytes": 32,
-      "sha256": "8d4822b45635b61a94af37c2be8d8a96acccccdd2c05383752c4ed0bf51012c3"
+      "path": "source.json",
+      "bytes": 879,
+      "sha256": "a132aac22b4d997b09716919cd2f155d8b1037ce280aaf13fbd07f1507b00461"
     }
   ],
-  "chunk_lengths": [
-    1,
-    4,
-    7,
-    3,
-    17
-  ],
-  "close_epoch": true
+  "calls": []
 }
