@@ -1,0 +1,31 @@
+{
+  "filing_id": "annual-2026-v2",
+  "documents": [
+    "annual.html",
+    "notes.html"
+  ],
+  "contexts": [
+    {
+      "id": "c1",
+      "entity": "issuer-1",
+      "period": "2026-01-01/2026-12-31"
+    }
+  ],
+  "units": [
+    {
+      "id": "u1",
+      "measure": "iso4217:CNY"
+    }
+  ],
+  "facts": [
+    {
+      "id": "f1",
+      "name": "Revenue",
+      "contextRef": "c1",
+      "unitRef": "u1",
+      "scale": 3,
+      "value": "1200",
+      "continuation": "continued-1"
+    }
+  ]
+}

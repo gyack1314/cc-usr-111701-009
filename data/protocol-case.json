@@ -1,0 +1,14 @@
+{
+  "kind": "source-records",
+  "protocol": "inline-xbrl",
+  "collection": "protocol-sample",
+  "source_url": "https://filings.example.test/filings/2026/annual.html",
+  "assets": [
+    {
+      "path": "protocol-source.bin",
+      "bytes": 490,
+      "sha256": "c5e77032ac01f3d2ddc4f27fbdd5b9de0deaee7ac8347d71021935447f97b22a"
+    }
+  ],
+  "calls": []
+}

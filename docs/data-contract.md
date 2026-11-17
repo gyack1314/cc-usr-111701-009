@@ -1,3 +1,6 @@
 # inline-xbrl 来源契约
 
 来源清单中的资产长度与 SHA-256 用于核对本地原文字节。文档的 collection 与 protocol 必须匹配清单，现有记录类型包括 filing, fact, context, unit。每条记录以 kind、id、version 定位，refs 指向同集合的其他记录，payload 原样留存。来源版本冲突会中断接收；本地引用闭合只表示当前收到的引用能定位，不表示远端序列或授权资料已经完整。
+
+## 已接收的协议资料
+现有入口保存申报版、context、unit 和 fact 的关联，以及 scale、continuation 原值。样例是已抽取字段的冻结接收格式，尚未解析真实 Inline XBRL HTML 或 taxonomy。
