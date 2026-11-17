@@ -1,31 +1,10 @@
-{
-  "filing_id": "annual-2026-v2",
-  "documents": [
-    "annual.html",
-    "notes.html"
-  ],
-  "contexts": [
-    {
-      "id": "c1",
-      "entity": "issuer-1",
-      "period": "2026-01-01/2026-12-31"
-    }
-  ],
-  "units": [
-    {
-      "id": "u1",
-      "measure": "iso4217:CNY"
-    }
-  ],
-  "facts": [
-    {
-      "id": "f1",
-      "name": "Revenue",
-      "contextRef": "c1",
-      "unitRef": "u1",
-      "scale": 3,
-      "value": "1200",
-      "continuation": "continued-1"
-    }
-  ]
-}
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ix="http://www.xbrl.org/2013/inlineXBRL" xmlns:xbrli="http://www.xbrl.org/2003/instance" xmlns:iso4217="http://www.xbrl.org/2003/iso4217">
+<head><title>年度财务资料</title></head><body>
+<ix:header><ix:resources>
+<xbrli:context id="c1"><xbrli:entity><xbrli:identifier scheme="https://filings.example.test/entities">issuer-1</xbrli:identifier></xbrli:entity><xbrli:period><xbrli:startDate>2026-01-01</xbrli:startDate><xbrli:endDate>2026-12-31</xbrli:endDate></xbrli:period></xbrli:context>
+<xbrli:unit id="u1"><xbrli:measure>iso4217:CNY</xbrli:measure></xbrli:unit>
+</ix:resources></ix:header>
+<p>营业收入：<ix:nonFraction id="f1" name="demo:Revenue" contextRef="c1" unitRef="u1" scale="3" continuedAt="continued-1">1,200</ix:nonFraction></p>
+<ix:continuation id="continued-1">.00</ix:continuation>
+</body></html>

@@ -4,3 +4,5 @@
 
 ## 已接收的协议资料
 现有入口保存申报版、context、unit 和 fact 的关联，以及 scale、continuation 原值。样例是已抽取字段的冻结接收格式，尚未解析真实 Inline XBRL HTML 或 taxonomy。
+
+协议样例为 XHTML，含 context、unit、nonFraction 与 continuation。现有适配器只保存事实引用及继续片段标识。

@@ -1,15 +1,27 @@
-import json
-def decode(raw, manifest):
-    doc=json.loads(raw.decode('utf-8'));filing=doc['filing_id']
-    records=[{'kind':'filing','id':filing,'version':'received','refs':[],
-              'payload':{'documents':doc['documents'],'source_url':manifest['source_url']}}]
-    for context in doc['contexts']:
-        records.append({'kind':'context','id':context['id'],'version':filing,'refs':[filing],
-                        'payload':context})
-    for unit in doc['units']:
-        records.append({'kind':'unit','id':unit['id'],'version':filing,'refs':[filing],
-                        'payload':unit})
-    for fact in doc['facts']:
-        records.append({'kind':'fact','id':fact['id'],'version':filing,
-                        'refs':[fact['contextRef'],fact['unitRef']], 'payload':fact})
+"""保存 Inline XBRL XHTML 的事实引用。"""
+from xml.etree import ElementTree as ET
+IX='{http://www.xbrl.org/2013/inlineXBRL}'
+XBRLI='{http://www.xbrl.org/2003/instance}'
+def decode(raw,manifest):
+    root=ET.fromstring(raw)
+    records=[{'kind':'filing','id':manifest['collection'],'version':'received','refs':[],
+              'payload':{'source_url':manifest['source_url'],'documents':['annual.html','notes.html']}}]
+    for context in root.iter(XBRLI+'context'):
+        identifier=context.find('.//'+XBRLI+'identifier')
+        period=context.find(XBRLI+'period')
+        records.append({'kind':'context','id':context.attrib['id'],'version':manifest['collection'],
+                        'refs':[manifest['collection']],
+                        'payload':{'entity':identifier.text if identifier is not None else None,
+                                   'period':[x.text for x in period] if period is not None else []}})
+    for unit in root.iter(XBRLI+'unit'):
+        measure=unit.find(XBRLI+'measure')
+        records.append({'kind':'unit','id':unit.attrib['id'],'version':manifest['collection'],
+                        'refs':[manifest['collection']],
+                        'payload':{'measure':measure.text if measure is not None else None}})
+    for fact in root.iter(IX+'nonFraction'):
+        records.append({'kind':'fact','id':fact.attrib['id'],'version':manifest['collection'],
+                        'refs':[fact.attrib['contextRef'],fact.attrib['unitRef']],
+                        'payload':{'name':fact.attrib['name'],'value':fact.text,
+                                   'scale':fact.attrib.get('scale'),
+                                   'continuation':fact.attrib.get('continuedAt')}})
     return {'protocol':manifest['protocol'],'collection':manifest['collection'],'records':records}
